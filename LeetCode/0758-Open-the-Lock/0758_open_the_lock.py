@@ -1,14 +1,15 @@
 from typing import List
 from collections import deque
-def openLock(deadends: List[str], target: str) -> int:
 
+
+def openLock(deadends: List[str], target: str) -> int:
     def increment(current, target):
         result = []
         current2 = [int(x) for x in current]
 
         for i, val in enumerate(current2):
-            result.append(current[:i] + str((val + 1)%10) + current[i+1:])
-            result.append(current[:i] + str((val - 1)%10) + current[i+1:])
+            result.append(current[:i] + str((val + 1) % 10) + current[i + 1 :])
+            result.append(current[:i] + str((val - 1) % 10) + current[i + 1 :])
 
         return result
 
@@ -34,6 +35,6 @@ def openLock(deadends: List[str], target: str) -> int:
 
         for next_move in next_moves:
             if next_move not in deadends_set and next_move not in visited:
-                queue.append([count+1, next_move])
+                queue.append([count + 1, next_move])
 
     return -1
